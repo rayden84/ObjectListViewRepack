@@ -50,10 +50,11 @@ namespace BrightIdeasSoftware {
         /// <summary>
         /// Create a OLVListSubItem that shows the given string and image
         /// </summary>
-        public OLVListSubItem(object modelValue, string text, Object image) {
+        public OLVListSubItem(ListViewItem item, object modelValue, string text, Object image) : base(item, text) {
             this.ModelValue = modelValue;
             this.Text = text;
             this.ImageSelector = image;
+            
         }
 
         #endregion

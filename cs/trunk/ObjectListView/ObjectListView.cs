@@ -8551,7 +8551,7 @@ namespace BrightIdeasSoftware
             if (this.Columns.Count == 0)
                 return;
 
-            OLVListSubItem subItem = this.MakeSubItem(rowObject, this.GetColumn(0));
+            OLVListSubItem subItem = this.MakeSubItem(lvi,rowObject, this.GetColumn(0));
             lvi.SubItems[0] = subItem;
             lvi.ImageSelector = subItem.ImageSelector;
 
@@ -8567,14 +8567,14 @@ namespace BrightIdeasSoftware
             switch (this.View) {
                 case View.Details:
                     for (int i = 1; i < this.Columns.Count; i++) {
-                        lvi.SubItems.Add(this.MakeSubItem(rowObject, this.GetColumn(i)));
+                        lvi.SubItems.Add(this.MakeSubItem(lvi,rowObject, this.GetColumn(i)));
                     }
                     break;
                 case View.Tile:
                     for (int i = 1; i < this.Columns.Count; i++) {
                         OLVColumn column = this.GetColumn(i);
                         if (column.IsTileViewColumn)
-                            lvi.SubItems.Add(this.MakeSubItem(rowObject, column));
+                            lvi.SubItems.Add(this.MakeSubItem(lvi,rowObject, column));
                     }
                     break;
             }
@@ -8598,9 +8598,9 @@ namespace BrightIdeasSoftware
             }
         }
 
-        private OLVListSubItem MakeSubItem(object rowObject, OLVColumn column) {
+        private OLVListSubItem MakeSubItem(ListViewItem owner, object rowObject, OLVColumn column) {
             object cellValue = column.GetValue(rowObject);
-            OLVListSubItem subItem = new OLVListSubItem(cellValue,
+            OLVListSubItem subItem = new OLVListSubItem(owner, cellValue,
                                                         column.ValueToString(cellValue),
                                                         column.GetImage(rowObject));
             if (this.UseHyperlinks && column.Hyperlink) {
