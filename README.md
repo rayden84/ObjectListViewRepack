@@ -1,5 +1,5 @@
-# ObjectListView REPACK for .NET Core 3
+# ObjectListView REPACK for .NET Core 6
 
-project repository: https://sourceforge.net/projects/objectlistview/
+original project repository: https://sourceforge.net/projects/objectlistview/
 
-nuget: https://www.nuget.org/packages/ObjectListView.Repack.Core3/
+
